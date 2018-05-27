@@ -1,3 +1,4 @@
 title: Welcome to RustBridge
+baseurl: "https://rustbridge.github.io/hello/"
 
 markdown: kramdown
