@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The RustBridge Book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="welcome.html">Welcome</a></li><li><a href="organizing/index.html"><strong aria-hidden="true">1.</strong> Organizing a RustBridge</a></li><li><a href="team/index.html"><strong aria-hidden="true">2.</strong> RustBridge Team</a></li><li><ol class="section"><li><a href="team/meetings.html"><strong aria-hidden="true">2.1.</strong> Team Meetings</a></li><li><a href="team/tools.html"><strong aria-hidden="true">2.2.</strong> Team Tooling</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">The RustBridge Book</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#welcome-to-rustbridge" id="welcome-to-rustbridge"><h1>Welcome to RustBridge!</h1></a>
+<p>No matter how you stumbled upon this project, this little page exists to guide
+you in the right direction. There's a bit more information depending on what
+you're interested in:</p>
+<a class="header" href="#i-want-to-attend-a-rustbridge-workshop" id="i-want-to-attend-a-rustbridge-workshop"><h2>I want to attend a RustBridge workshop!</h2></a>
+<p>Great! Unfortunately we currently lack a centralized directory of all RustBridge
+events happening around the globe (although that would be really nice to have),
+so for now your best bet is to have a look at the
+<a href="https://github.com/rustbridge/team/issues?q=is%3Aissue+is%3Aopen+label%3Aevent">
+issues tagged with <code>event</code></a>, that's generally where all events that
+run under the RustBridge name are tracked, but it's not always reliable.
+</a></p>
+<a class="header" href="#i-want-to-host-my-own-rustbridge-workshop" id="i-want-to-host-my-own-rustbridge-workshop"><h2>I want to host my own RustBridge workshop!</h2></a>
+<p>Oh, fantastic! We've prepared a document just for you, you can have a look at it
+<a href="./organizing/index.html">here</a>.</p>
+<a class="header" href="#organizing-rustbridge" id="organizing-rustbridge"><h1>Organizing RustBridge</h1></a>
+<p>First of all: Welcome to the RustBridge team! We have a very flat hierarchy,
+and any person that's interested in organizing is very welcome in our ranks.</p>
+<p>That being said, organizing a RustBridge event is much simpler than you might
+think. What makes RustBridge events RustBridge events can be boiled down to three points:</p>
+<ul>
+<li>The event has to be free</li>
+<li>The event has to be targeted towards underrepresented minorities in Tech</li>
+<li>The event has to follow the <a href="https://www.rust-lang.org/en-US/conduct.html">Rust Code of Conduct</a></li>
+</ul>
+<p>But apart from that, you can use any venue, use any curriculum, with as many people
+as you want! Although we also provide materials specifically for people who have never
+organized a RustBridge event before, so <em>maybe</em> you'd want to check those out...</p>
+<a class="header" href="#making-initial-plans" id="making-initial-plans"><h2>Making initial plans</h2></a>
+<p>With organizing any event, it's usually good to have an overview of what you want
+to accomplish before setting out to do the first steps. That means that you should
+be clear <em>where</em>, (roughly) <em>when</em> and <em>with who</em> you want to organize your
+event. It's usually better if you have an organizing/teaching team of at least two,
+or more depending on the size of your audience. Also if you have a rough date and a
+potential venue, it might be good to give them a call before doing anything concrete.</p>
+<a class="header" href="#getting-things-scheduled" id="getting-things-scheduled"><h2>Getting things scheduled</h2></a>
+<p>First things first, settle on a date. This can be during the work week, but keep
+in mind that it's usually an all-day event, so people's capabilities might be limited.
+Make sure that nothing else is happening at your chosen date (like a world cup finale
+in your city, for example).</p>
+<p>After that, probably the most important step is to secure a venue for your date. Try
+asking around, be it on Twitter, at meetups, or in other local circles. If you live
+in a bigger city, there's usually some companies who would be happy to sponsor the
+venue for your event.</p>
+<p>Phew, that's the two most important things done! Now's probably the point at which
+you should post your meetup in our GitHub issue tracker. If you want to, or if you're
+unsure about anything, you can contact us privately before. Once you're ready, post
+a new issue in the <a href="https://github.com/rustbridge/team/issues/new">rustbridge/team</a>
+GitHub repository. It doesn't have to be an incredibly detailed issue, it just needs the
+time and the name of an organizer (maybe you?). A venue is also recommended, but if
+you don't have one at this stage, we have ways to help you with that.</p>
+<a class="header" href="#getting-people-to-sign-up" id="getting-people-to-sign-up"><h2>Getting people to sign up</h2></a>
+<p>Because RustBridge events are aimed towards underrepresented minorities, you might
+want to consider not making it a &quot;everyone can come without registration&quot; type of
+event. Not only does it make some people feel unwell, but we've had cases in the
+past where events got interrupted by third parties with bad intent. For that same reason,
+consider <strong>not making the venue location public</strong>, especially if it's a publicly
+accessable venue.</p>
+<p>In the past, we've usually used a simple Google Forms form for signups to RustBridge
+events. This works fairly well, especially if your event is small to medium-scale.
+If you need or want more information/help regarding these processes, don't hesitate
+to contact us!</p>
+<p>If you want to spread the word about your event, we can definitely help you with that.
+We have multiple channels over which we can announce your event, so feel free to talk
+to us regarding that.</p>
+<a class="header" href="#as-the-event-approaches" id="as-the-event-approaches"><h2>As the event approaches</h2></a>
+<p>Getting nervous yet? Good, everyone does! Here's a couple of things that you might
+want to consider as your event draws closer:</p>
+<ul>
+<li>Catering. People probably want lunch, so if the venue offers catering, great!
+If not, no worries, you can always just tell the group to go and organize lunch
+on their own.</li>
+<li>Drinks. Some venues have a fridge with drinks, if not, you might
+just want to get some water and plastic cups from the local supermarket.</li>
+</ul>
+<a class="header" href="#at-the-event" id="at-the-event"><h2>At the event</h2></a>
+<p>On the day of the event, make sure you're at the venue early so you can get everything
+set up. Having multiple teachers/mentors is recommended, but depends on the size of
+your group. Set yourself a schedule that you'll follow during the day, and be careful
+to meet the deadlines imposed by your venue. Other than that, have a great time!</p>
+<a class="header" href="#further-questions" id="further-questions"><h2>Further questions</h2></a>
+<p>It's unlikely that this document will ever reflect everything that goes into a RustBridge
+event, so if you have questions, we'll do our best to help you out.</p>
+<p>If you need help from the RustBridge team, we're on the RustBridge Slack, in the #rustbridge
+Mozilla IRC channel, in the #rustbridge Rust Discord channel, as well as on GitHub. In
+doubt, just open a new issue on <a href="https://github.com/rustbridge/team/issues/new%22">rustbridge/team</a>.</p>
+<p>If you need help regarding spreading the word, finding a venue, or finding other
+interested people in your area, the Community Team can probably help you with that.
+They're on the #rust-community Mozilla IRC channel, as well as
+<a href="mailto:community@rust-lang.org">at community@rust-lang.org</a> via email.</p>
+<a class="header" href="#rustbridge-team" id="rustbridge-team"><h1>RustBridge Team</h1></a>
+<p>The RustBridge team is comprised of individuals who whost RustBridge events,
+work on tooling for RustBridge, and people who are just interested in improving
+existing conditions under which events are organized.</p>
+<p>The team is formally a sub-team of the <a href="https://community.rs">Rust Community Team</a>,
+and the current team lead is <a href="https://awoo.su">Olivia Hugger</a>. This means that
+RustBridge is fully integrated into the Rust project, which brings with it many
+benefits such as cross-cutting team concerns and easier internal communication.</p>
+<a class="header" href="#team-meetings" id="team-meetings"><h1>Team Meetings</h1></a>
+<p>RustBridge team meetings are nominally held every 2 weeks (alternating with the
+Community Team meetings), at 5:00 PM UTC. A timezone-aware overview of the next
+meeting time can be found <a href="https://timee.io/20181010T1700?rf=w&amp;ri=2&amp;rv=3&amp;tl=RustBridge%20Meeting">here</a>.</p>
+<p>Meetings happen over video and audio, using <code>meet.jit.si</code>. Our meeting room is <a href="http://meet.jit.si/rustbridge">here</a>.</p>
+<p>Every meeting has an agenda which is documented as a GitHub issue in the <code>rustbridge/team</code>
+repository. You can browse past meeting agendas <a href="https://github.com/rustbridge/team/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+is%3Aclosed+sort%3Aupdated-desc+label%3AT-meeting+">here</a>.</p>
+<p>Meetings are also sometimes discussed in our <a href="./tools.html#discord">Discord channel</a>. If you want to
+start attending our meetings, that's the best place to ask!</p>
+<a class="header" href="#team-tooling" id="team-tooling"><h1>Team Tooling</h1></a>
+<a class="header" href="#discord" id="discord"><h2>Discord</h2></a>
+<p>The main open discussion space for the RustBridge project is in the Rust
+project Discord server. Discord is a chat platform that's easy to use
+and available on most platforms. You can join the Discord server of the
+Rust project by visiting <a href="https://discord.gg/rust-lang">this link</a>.</p>
+<p>RustBridge has a channel called <code>#rustbridge</code>, which is categorized under the
+&quot;Community&quot; section. If you use the <code>Ctrl/Cmd+K</code> shortcut and search for
+RustBridge, you will find it. Feel free to ask questions and hang out!</p>
+<a class="header" href="#airtable" id="airtable"><h2>Airtable</h2></a>
+<p>Internally, most RustBridge events are centrally planned using <a href="http://airtable.com">Airtable</a>.
+This gives us overview and flexibility over which events are happening where.
+These sheets are not available to the public, as they contain potentially
+private information. They're only visible to RustBridge team members and select
+event organizers and teachers.</p>
+<a class="header" href="#github" id="github"><h2>GitHub</h2></a>
+<p>RustBridge uses GitHub to manage and publicly plan events, as well as develop
+infrastructure around the project. Here's some interesting repositories:</p>
+<ul>
+<li><a href="https://github.com/rustbridge/team">team</a>: This is where the team plans meetings
+and publicly announces RustBridge events.</li>
+<li><a href="https://github.com/rustbridge/in-a-box">in-a-box</a>: A somewhat complete resource for
+RustBridge event organizers needing a curriculum, funding advice, et cetera.</li>
+<li><a href="https://github.com/rustbridge/book">book</a>: The source to this book!</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
